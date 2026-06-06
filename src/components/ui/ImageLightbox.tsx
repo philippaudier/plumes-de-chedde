@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useCallback } from "react";
+import { useEffect, useCallback, useState } from "react";
+import { createPortal } from "react-dom";
 import Image from "next/image";
 
 type ImageLightboxProps = {
@@ -10,6 +11,8 @@ type ImageLightboxProps = {
 };
 
 export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
+  const [mounted, setMounted] = useState(false);
+
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -20,6 +23,7 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
   );
 
   useEffect(() => {
+    setMounted(true);
     document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
 
@@ -29,7 +33,9 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
     };
   }, [handleKeyDown]);
 
-  return (
+  if (!mounted) return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-encre/90 backdrop-blur-sm animate-in fade-in duration-200"
       onClick={onClose}
@@ -77,6 +83,7 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
           Appuie sur Échap ou clique pour fermer
         </p>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
