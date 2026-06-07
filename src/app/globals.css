@@ -101,8 +101,8 @@ h1, h2, h3, h4, h5, h6 {
   color: #2B2722;
 }
 
-/* Naturalist desk background transition for wide screens */
-@media (min-width: 1280px) {
+/* Naturalist desk background transition for tablet and desktop screens */
+@media (min-width: 768px) {
   body {
     background-color: #EDE6D8; /* papier-dark / desk tone */
   }

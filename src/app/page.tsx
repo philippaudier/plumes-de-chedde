@@ -222,7 +222,7 @@ export default function HomePage() {
       {isLoaded && (
         <section>
           <h2 className="font-serif text-2xl text-encre mb-4">Le carnet s'écrit...</h2>
-          <SoftCard className="p-8 bg-gradient-to-br from-papier-dark/40 to-white/20 border-dashed border-encre/10">
+          <SoftCard className="p-5 md:p-8 bg-gradient-to-br from-papier-dark/40 to-white/20 border-dashed border-encre/10">
             <p className="text-lg leading-relaxed text-encre-light font-serif italic max-w-2xl mx-auto text-center">
               "Dans le silence de la vallée, ton regard s'est posé sur{" "}
               <span className="text-sapin font-bold not-italic">{seenCount}</span>{" "}

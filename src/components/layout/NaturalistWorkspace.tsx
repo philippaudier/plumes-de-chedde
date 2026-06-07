@@ -12,7 +12,7 @@ export function NaturalistWorkspace({ children }: NaturalistWorkspaceProps) {
       {/* CONTENU PRINCIPAL (Le carnet lui-même) */}
       <div className="max-w-5xl mx-auto px-4 py-8 relative">
         {/* Wrapper de style carnet physique */}
-        <div className="xl:bg-white/60 xl:backdrop-blur-md xl:border xl:border-encre/10 xl:rounded-3xl xl:p-8 xl:shadow-card">
+        <div className="md:bg-white/60 md:backdrop-blur-md md:border md:border-encre/10 md:rounded-3xl md:p-6 lg:p-8 md:shadow-card">
           {children}
         </div>
       </div>

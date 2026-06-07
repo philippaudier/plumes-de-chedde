@@ -133,7 +133,7 @@ export default function BirdDetailPage({ params }: PageProps) {
           </SoftCard>
 
           {/* Statut personnel - Mobile uniquement */}
-          <div className="lg:hidden">
+          <div className="lg:hidden space-y-6">
             <SoftCard className="p-6">
               <div className="flex items-center justify-between mb-4">
                 <h2 className="font-serif text-xl text-encre">Ta rencontre</h2>
@@ -152,6 +152,45 @@ export default function BirdDetailPage({ params }: PageProps) {
                 />
               )}
             </SoftCard>
+
+            {/* Souvenir personnel - Mobile uniquement */}
+            {memory?.personalNote && (
+              <SoftCard className="p-6 bg-souvenir/10">
+                <h2 className="font-serif text-xl text-encre mb-3 flex items-center gap-2">
+                  <span>🪶</span> Ton souvenir
+                </h2>
+
+                <p className="text-encre-light leading-relaxed mb-4">
+                  {memory.personalNote}
+                </p>
+
+                {(memory.placeName || memory.mood) && (
+                  <div className="flex flex-wrap gap-2 text-sm">
+                    {memory.placeName && (
+                      <span className="text-encre-light">
+                        📍 {memory.placeName}
+                      </span>
+                    )}
+                    {memory.mood && (
+                      <span className="text-encre-light">
+                        · {MOOD_LABELS[memory.mood]}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {memory.firstSeenAt && (
+                  <p className="text-xs text-encre-light/70 mt-3">
+                    Première rencontre le{" "}
+                    {new Date(memory.firstSeenAt).toLocaleDateString("fr-FR", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
+                )}
+              </SoftCard>
+            )}
           </div>
 
           {/* Info de base */}
@@ -270,43 +309,45 @@ export default function BirdDetailPage({ params }: PageProps) {
             </SoftCard>
           </div>
 
-          {/* Souvenir personnel */}
+          {/* Souvenir personnel - Desktop uniquement */}
           {memory?.personalNote && (
-            <SoftCard className="p-6 bg-souvenir/10">
-              <h2 className="font-serif text-xl text-encre mb-3 flex items-center gap-2">
-                <span>🪶</span> Ton souvenir
-              </h2>
+            <div className="hidden lg:block">
+              <SoftCard className="p-6 bg-souvenir/10">
+                <h2 className="font-serif text-xl text-encre mb-3 flex items-center gap-2">
+                  <span>🪶</span> Ton souvenir
+                </h2>
 
-              <p className="text-encre-light leading-relaxed mb-4">
-                {memory.personalNote}
-              </p>
-
-              {(memory.placeName || memory.mood) && (
-                <div className="flex flex-wrap gap-2 text-sm">
-                  {memory.placeName && (
-                    <span className="text-encre-light">
-                      📍 {memory.placeName}
-                    </span>
-                  )}
-                  {memory.mood && (
-                    <span className="text-encre-light">
-                      · {MOOD_LABELS[memory.mood]}
-                    </span>
-                  )}
-                </div>
-              )}
-
-              {memory.firstSeenAt && (
-                <p className="text-xs text-encre-light/70 mt-3">
-                  Première rencontre le{" "}
-                  {new Date(memory.firstSeenAt).toLocaleDateString("fr-FR", {
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
+                <p className="text-encre-light leading-relaxed mb-4">
+                  {memory.personalNote}
                 </p>
-              )}
-            </SoftCard>
+
+                {(memory.placeName || memory.mood) && (
+                  <div className="flex flex-wrap gap-2 text-sm">
+                    {memory.placeName && (
+                      <span className="text-encre-light">
+                        📍 {memory.placeName}
+                      </span>
+                    )}
+                    {memory.mood && (
+                      <span className="text-encre-light">
+                        · {MOOD_LABELS[memory.mood]}
+                      </span>
+                    )}
+                  </div>
+                )}
+
+                {memory.firstSeenAt && (
+                  <p className="text-xs text-encre-light/70 mt-3">
+                    Première rencontre le{" "}
+                    {new Date(memory.firstSeenAt).toLocaleDateString("fr-FR", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </p>
+                )}
+              </SoftCard>
+            </div>
           )}
         </div>
       </div>

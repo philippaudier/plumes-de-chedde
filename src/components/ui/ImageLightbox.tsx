@@ -37,7 +37,7 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
 
   return createPortal(
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-encre/90 backdrop-blur-sm animate-in fade-in duration-200"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-encre/90 backdrop-blur-sm animate-in fade-in duration-200 p-4 md:p-8"
       onClick={onClose}
     >
       {/* Close button */}
@@ -63,7 +63,7 @@ export function ImageLightbox({ src, alt, onClose }: ImageLightboxProps) {
 
       {/* Image container */}
       <div
-        className="relative w-full h-full max-w-5xl max-h-[90vh] m-4"
+        className="relative w-full h-full max-w-5xl max-h-[85vh] md:max-h-[90vh]"
         onClick={(e) => e.stopPropagation()}
       >
         <Image

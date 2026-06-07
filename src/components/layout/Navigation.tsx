@@ -69,7 +69,7 @@ export function Navigation() {
               height={36}
               className="w-9 h-9"
             />
-            <span className="hidden sm:inline">Plumes de Chedde</span>
+            <span className="inline font-serif text-base sm:text-lg tracking-wide">Plumes de Chedde</span>
           </Link>
 
           {/* Desktop Navigation */}
