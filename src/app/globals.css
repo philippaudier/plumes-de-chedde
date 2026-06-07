@@ -125,6 +125,10 @@ html.lenis, html.lenis body {
   overflow: hidden;
 }
 
-.lenis-scrolling iframe {
-  pointer-events: none;
+.lenis-scrolling iframe,
+.lenis-scrolling a,
+.lenis-scrolling button,
+.lenis-scrolling [role="button"],
+.lenis-scrolling .group {
+  pointer-events: none !important;
 }

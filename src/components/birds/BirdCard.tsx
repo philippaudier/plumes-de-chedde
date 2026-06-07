@@ -27,7 +27,7 @@ export function BirdCard({
   return (
     <Link href={`/oiseaux/${bird.slug}`} className="block group h-full">
       <div
-        className={`overflow-hidden rounded-2xl border bg-papier-dark shadow-soft transition-all duration-300 hover:-translate-y-1 hover:shadow-card h-full flex flex-col justify-between ${
+        className={`overflow-hidden rounded-2xl border bg-papier-dark shadow-soft transition-[transform,box-shadow,border-color] duration-300 transform-gpu will-change-transform hover:-translate-y-1 hover:shadow-card h-full flex flex-col justify-between ${
           isEncountered
             ? "border-sapin/20"
             : "border-encre/5"
