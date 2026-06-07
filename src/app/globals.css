@@ -107,3 +107,24 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #EDE6D8; /* papier-dark / desk tone */
   }
 }
+
+/* Lenis smooth scroll configuration */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
+}
