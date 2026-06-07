@@ -132,6 +132,28 @@ export default function BirdDetailPage({ params }: PageProps) {
             </p>
           </SoftCard>
 
+          {/* Statut personnel - Mobile uniquement */}
+          <div className="lg:hidden">
+            <SoftCard className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-serif text-xl text-encre">Ta rencontre</h2>
+                <BirdStatusBadge status={status} hasNote={hasNote} />
+              </div>
+
+              {isLoaded && (
+                <BirdMemoryActions
+                  status={status}
+                  onMarkHeard={handleMarkHeard}
+                  onMarkSeen={handleMarkSeen}
+                  onMarkPhotographed={handleMarkPhotographed}
+                  onOpenNoteEditor={() => setIsNoteEditorOpen(true)}
+                  onReset={() => clearMemory(bird.id)}
+                  hasNote={hasNote}
+                />
+              )}
+            </SoftCard>
+          </div>
+
           {/* Info de base */}
           <SoftCard className="p-6">
             <div className="flex flex-wrap items-center gap-3 mb-4">
@@ -226,25 +248,27 @@ export default function BirdDetailPage({ params }: PageProps) {
 
         {/* Colonne latérale */}
         <div className="space-y-6">
-          {/* Statut personnel */}
-          <SoftCard className="p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="font-serif text-xl text-encre">Ta rencontre</h2>
-              <BirdStatusBadge status={status} hasNote={hasNote} />
-            </div>
+          {/* Statut personnel - Desktop uniquement */}
+          <div className="hidden lg:block">
+            <SoftCard className="p-6">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="font-serif text-xl text-encre">Ta rencontre</h2>
+                <BirdStatusBadge status={status} hasNote={hasNote} />
+              </div>
 
-            {isLoaded && (
-              <BirdMemoryActions
-                status={status}
-                onMarkHeard={handleMarkHeard}
-                onMarkSeen={handleMarkSeen}
-                onMarkPhotographed={handleMarkPhotographed}
-                onOpenNoteEditor={() => setIsNoteEditorOpen(true)}
-                onReset={() => clearMemory(bird.id)}
-                hasNote={hasNote}
-              />
-            )}
-          </SoftCard>
+              {isLoaded && (
+                <BirdMemoryActions
+                  status={status}
+                  onMarkHeard={handleMarkHeard}
+                  onMarkSeen={handleMarkSeen}
+                  onMarkPhotographed={handleMarkPhotographed}
+                  onOpenNoteEditor={() => setIsNoteEditorOpen(true)}
+                  onReset={() => clearMemory(bird.id)}
+                  hasNote={hasNote}
+                />
+              )}
+            </SoftCard>
+          </div>
 
           {/* Souvenir personnel */}
           {memory?.personalNote && (
