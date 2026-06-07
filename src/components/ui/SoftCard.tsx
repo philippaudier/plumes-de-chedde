@@ -16,7 +16,7 @@ export function SoftCard({
   onClick,
 }: SoftCardProps) {
   const baseClasses =
-    "bg-white/70 backdrop-blur-md border border-encre/5 rounded-card shadow-soft";
+    "bg-white/80 border border-encre/5 rounded-card shadow-soft";
   const hoverClasses = hover
     ? "transition-all duration-300 hover:shadow-card hover:border-encre/10 hover:-translate-y-0.5 hover:rotate-[0.3deg] odd:hover:rotate-[-0.3deg]"
     : "";

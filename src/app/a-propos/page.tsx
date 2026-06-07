@@ -73,7 +73,7 @@ export default function AProposPage() {
 
           {/* Cartes habitats */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-encre/5">
+            <div className="bg-white/80 rounded-xl p-4 border border-encre/5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">🏡</span>
                 <h3 className="font-serif text-encre">Jardins & villages</h3>
@@ -84,7 +84,7 @@ export default function AProposPage() {
               </p>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-encre/5">
+            <div className="bg-white/80 rounded-xl p-4 border border-encre/5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">💧</span>
                 <h3 className="font-serif text-encre">Rivière & torrents</h3>
@@ -96,7 +96,7 @@ export default function AProposPage() {
               </p>
             </div>
 
-            <div className="bg-white/60 backdrop-blur-sm rounded-xl p-4 border border-encre/5">
+            <div className="bg-white/80 rounded-xl p-4 border border-encre/5">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-lg">🏔️</span>
                 <h3 className="font-serif text-encre">Falaises & montagne</h3>
