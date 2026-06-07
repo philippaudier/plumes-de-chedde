@@ -2,7 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { EB_Garamond, Plus_Jakarta_Sans, Caveat } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { NaturalistWorkspace } from "@/components/layout/NaturalistWorkspace";
-import { SmoothScroller } from "@/components/ui/SmoothScroller";
 import "./globals.css";
 
 const ebGaramond = EB_Garamond({
@@ -63,7 +62,6 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body className={`${ebGaramond.variable} ${plusJakartaSans.variable} ${caveat.variable} font-sans min-h-screen bg-papier text-encre antialiased`}>
-        <SmoothScroller />
         <Navigation />
         <main>
           <NaturalistWorkspace>
