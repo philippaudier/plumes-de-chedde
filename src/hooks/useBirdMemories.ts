@@ -85,6 +85,7 @@ export function useBirdMemories() {
           placeName: updates.placeName ?? existing?.placeName,
           personalNote: updates.personalNote ?? existing?.personalNote,
           mood: updates.mood ?? existing?.mood,
+          photoUrl: updates.photoUrl ?? existing?.photoUrl,
           updatedAt: new Date().toISOString(),
         };
 
@@ -168,7 +169,14 @@ export function useBirdMemories() {
       if (memory.status === "heard") heard++;
       if (memory.status === "seen") seen++;
       if (memory.status === "photographed") photographed++;
-      if (memory.personalNote && memory.personalNote.trim().length > 0) withNotes++;
+      if (
+        (memory.personalNote && memory.personalNote.trim().length > 0) ||
+        memory.photoUrl ||
+        memory.placeName ||
+        memory.mood
+      ) {
+        withNotes++;
+      }
     });
 
     return {
@@ -193,7 +201,12 @@ export function useBirdMemories() {
   // Obtenir les souvenirs avec notes
   const getMemoriesWithNotes = useCallback((): BirdMemory[] => {
     return Array.from(memories.values())
-      .filter((m) => m.personalNote && m.personalNote.trim().length > 0)
+      .filter((m) => 
+        (m.personalNote && m.personalNote.trim().length > 0) ||
+        m.photoUrl ||
+        m.placeName ||
+        m.mood
+      )
       .sort((a, b) => {
         return new Date(b.updatedAt).getTime() - new Date(a.updatedAt).getTime();
       });

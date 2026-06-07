@@ -43,7 +43,12 @@ export default function BirdDetailPage({ params }: PageProps) {
 
   const status = isLoaded ? getStatus(bird.id) : "unknown";
   const memory = isLoaded ? getMemory(bird.id) : undefined;
-  const hasNote = !!memory?.personalNote;
+  const hasNote = !!(
+    memory?.personalNote ||
+    memory?.photoUrl ||
+    memory?.placeName ||
+    memory?.mood
+  );
 
   const handleSaveNote = (note: string, place?: string, mood?: BirdMood, photoUrl?: string) => {
     setPersonalNote(bird.id, note, place, mood, photoUrl);
@@ -154,15 +159,17 @@ export default function BirdDetailPage({ params }: PageProps) {
             </SoftCard>
 
             {/* Souvenir personnel - Mobile uniquement */}
-            {memory?.personalNote && (
+            {(memory?.personalNote || memory?.placeName || memory?.mood) && (
               <SoftCard className="p-6 bg-souvenir/10">
                 <h2 className="font-serif text-xl text-encre mb-3 flex items-center gap-2">
                   <span>🪶</span> Ton souvenir
                 </h2>
 
-                <p className="text-encre-light leading-relaxed mb-4">
-                  {memory.personalNote}
-                </p>
+                {memory.personalNote && (
+                  <p className="text-encre-light leading-relaxed mb-4">
+                    {memory.personalNote}
+                  </p>
+                )}
 
                 {(memory.placeName || memory.mood) && (
                   <div className="flex flex-wrap gap-2 text-sm">
@@ -310,16 +317,18 @@ export default function BirdDetailPage({ params }: PageProps) {
           </div>
 
           {/* Souvenir personnel - Desktop uniquement */}
-          {memory?.personalNote && (
+          {(memory?.personalNote || memory?.placeName || memory?.mood) && (
             <div className="hidden lg:block">
               <SoftCard className="p-6 bg-souvenir/10">
                 <h2 className="font-serif text-xl text-encre mb-3 flex items-center gap-2">
                   <span>🪶</span> Ton souvenir
                 </h2>
 
-                <p className="text-encre-light leading-relaxed mb-4">
-                  {memory.personalNote}
-                </p>
+                {memory.personalNote && (
+                  <p className="text-encre-light leading-relaxed mb-4">
+                    {memory.personalNote}
+                  </p>
+                )}
 
                 {(memory.placeName || memory.mood) && (
                   <div className="flex flex-wrap gap-2 text-sm">

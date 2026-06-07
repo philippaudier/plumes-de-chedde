@@ -97,7 +97,12 @@ export default function CarnetPage() {
                           </h3>
                           <BirdStatusBadge
                             status={memory.status}
-                            hasNote={!!memory.personalNote}
+                            hasNote={!!(
+                              memory.personalNote ||
+                              memory.photoUrl ||
+                              memory.placeName ||
+                              memory.mood
+                            )}
                           />
                         </div>
                         <p className="text-sm text-encre-light truncate">
@@ -170,9 +175,11 @@ export default function CarnetPage() {
                               <h3 className="font-serif text-lg text-encre leading-tight mb-1">
                                 {bird.nameFr}
                               </h3>
-                              <p className="font-cursive text-2xl text-encre-light leading-relaxed mb-3 line-clamp-3">
-                                {memory.personalNote}
-                              </p>
+                              {memory.personalNote && (
+                                <p className="font-cursive text-2xl text-encre-light leading-relaxed mb-3 line-clamp-3">
+                                  {memory.personalNote}
+                                </p>
+                              )}
                             </div>
                             <div className="flex justify-between items-end text-xs text-encre-light/70 font-sans border-t border-encre/5 pt-2">
                               <span>{memory.placeName ? `📍 ${memory.placeName}` : "Passy"}</span>
@@ -208,21 +215,23 @@ export default function CarnetPage() {
                             </div>
                             
                             {/* Lined text block */}
-                            <div 
-                              className="relative font-cursive text-2xl text-encre-light leading-relaxed my-3 py-2 px-4 rounded-xl shadow-2xs border pl-6"
-                              style={{
-                                backgroundColor: '#FAF9F5',
-                                backgroundImage: 'linear-gradient(rgba(61, 46, 26, 0.08) 1px, transparent 1px)',
-                                backgroundSize: '100% 32px',
-                                lineHeight: '32px',
-                                borderColor: 'rgba(61, 46, 26, 0.12)',
-                                paddingTop: '4px',
-                                paddingBottom: '4px',
-                              }}
-                            >
-                              <span className="absolute top-0.5 left-2.5 text-lg text-bois select-none opacity-45 font-serif">“</span>
-                              <p className="line-clamp-4 relative z-10">{memory.personalNote}</p>
-                            </div>
+                            {memory.personalNote && (
+                              <div 
+                                className="relative font-cursive text-2xl text-encre-light leading-relaxed my-3 py-2 px-4 rounded-xl shadow-2xs border pl-6"
+                                style={{
+                                  backgroundColor: '#FAF9F5',
+                                  backgroundImage: 'linear-gradient(rgba(61, 46, 26, 0.08) 1px, transparent 1px)',
+                                  backgroundSize: '100% 32px',
+                                  lineHeight: '32px',
+                                  borderColor: 'rgba(61, 46, 26, 0.12)',
+                                  paddingTop: '4px',
+                                  paddingBottom: '4px',
+                                }}
+                              >
+                                <span className="absolute top-0.5 left-2.5 text-lg text-bois select-none opacity-45 font-serif">“</span>
+                                <p className="line-clamp-4 relative z-10">{memory.personalNote}</p>
+                              </div>
+                            )}
                           </div>
                           
                           <div className="flex justify-between items-end text-xs text-encre-light/60 font-sans border-t border-encre/5 pt-3 mt-4">
@@ -256,7 +265,12 @@ export default function CarnetPage() {
                   key={bird.id}
                   bird={bird}
                   status={memory.status}
-                  hasNote={!!memory.personalNote}
+                  hasNote={!!(
+                    memory.personalNote ||
+                    memory.photoUrl ||
+                    memory.placeName ||
+                    memory.mood
+                  )}
                   userPhotoUrl={memory.photoUrl}
                 />
               ))}
